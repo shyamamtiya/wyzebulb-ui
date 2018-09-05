@@ -1,0 +1,67 @@
+<div class="container">
+  <div>
+    <h2>Incoming data</h2>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <template #incData>
+      </template>
+      <div><button type="button" class="btn btn-primary btn-oval" (click)="createComponent()">+</button></div>
+    </div>
+  </div>
+  <div><button type="button" class="btn btn-primary " (click)="send()">Submit</button></div>
+  <br>
+  <div *ngIf="isData">
+    <h2 >Filter</h2>
+  </div>
+  <div class="panel panel-default" *ngIf="isData">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="sel1">Select list:</label>
+            <select class="form-control" id="sel1" (click)="onChange($event.target.value)">
+              <option value={{key.key}} *ngFor="let key of obj  | keyspipe">{{key.key}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="sel1">Condition</label>
+            <select class="form-control" id="sel2" (click)="onCondition($event.target.value)">
+              <option value="equals">Equals</option>
+              <option value="not equals">Not Equals</option>
+              <option value="lesser than">lesser than</option>
+              <option value="greater than">greater than</option>
+              <option value="contains">contains</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="sel">Value</label>
+            <input type="text" class="form-control" placeholder="value.." [value]="userValue" [(ngModel)]="userValue">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h2 *ngIf="isData">Action</h2>
+  </div>
+  <div class="panel panel-default" *ngIf="isData">
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="sel1">Select list:</label>
+        <select class="form-control " id="sel5" (click)="onSelectPhone($event.target.value)">
+          <option value={{key.value}} *ngFor="let key of obj | keyspipe">{{key.key}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+          <label for="msg">Message:</label>
+          <textarea class="form-control" rows="5" id="msg" placeholder="Enter a message...." [value]="msg" [(ngModel)]="msg"></textarea>
+        </div>
+      <div><button type="button" class="btn btn-primary" (click)="sendSMS()">Send Message</button></div>
+    </div>
+  </div>
+</div>

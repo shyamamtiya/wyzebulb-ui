@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-sm-5">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="text/number" [value]="key" [(ngModel)]="key" >
+    </div>
+  </div>
+  <div class="col-sm-5">
+    <input type="text" class="form-control" placeholder="text/number" [value]="value1" [(ngModel)]="value1" >
+  </div>
+  <div class="col-sm-2">
+      <button class="btn btn-primary" (click)="sendData()">Save</button>
+  </div>
+</div>
